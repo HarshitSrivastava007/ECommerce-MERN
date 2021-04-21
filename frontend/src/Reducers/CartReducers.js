@@ -1,4 +1,4 @@
-import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_PYMENT_METHOD, CART_SAVE_SHIPPING_ADDRESS} from '../Constents/CartConstent'
+import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_PYMENT_METHOD, CART_SAVE_SHIPPING_ADDRESS, CART_CLEAR_ITEMS} from '../Constents/CartConstent'
 
 export const cartReducer = (state = { cartItems: [], shippingAddress: {} }, action) =>{
     switch(action.type){
@@ -37,6 +37,11 @@ export const cartReducer = (state = { cartItems: [], shippingAddress: {} }, acti
                 ...state,
                 paymentMethod: action.payload,
                 }
+        case CART_CLEAR_ITEMS:
+            return{
+                ...state,
+                cartItems:[],
+            }
         default:
             return state
     }

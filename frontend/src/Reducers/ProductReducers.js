@@ -41,7 +41,7 @@ export const productListReducer = (state = { products: [] },action)=>{  //produc
 export const productDetailsReducer = (state = { product: {} },action)=>{  //productList reducer it will handles the listing of the products and also list product action
     switch (action.type){
         case PRODUCT_DETAILS_REQUEST:
-            return{ loading: true, ...state }   //...spread  operater whatever in this there, we are just going to spread      //we want the compinent to know its. currently fetching data
+            return{ ...state, loading: true,  }   //...spread  operater whatever in this there, we are just going to spread      //we want the compinent to know its. currently fetching data
         case PRODUCT_DETAILS_SUCCESS:
             return{ loading: false, product: action.payload } //we are going to fill products in the state with that payload.
         case PRODUCT_DETAILS_FAIL:

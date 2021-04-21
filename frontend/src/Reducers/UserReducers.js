@@ -50,6 +50,8 @@ export const userRegisterReducer = (state = { },action)=>{         //productList
             return{ loading: false, userInfo: action.payload }  //we are going to fill products in the state with that payload.
         case USER_REGISTER_FAIL:
             return{ loading: false, error: action.payload}      //sending error in payload
+        case USER_LOGOUT:
+            return{}
         default:
             return state 
     }

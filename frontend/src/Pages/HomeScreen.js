@@ -10,8 +10,6 @@ import Meta from '../components/Meta'
 import Paginate from '../components/Paginate'
 import { listProducts } from '../Actions/PdoductAction'
 
-//import products from '../products'
-
 const HomeScreen = ({ match }) => {
     const keyword = match.params.keyword
     const pageNumber = match.params.pageNumber || 1
@@ -32,7 +30,7 @@ const HomeScreen = ({ match }) => {
     return (
         <>
         
-        <Meta />
+        <Meta/>
         {!keyword ? <ProductCarousel /> : <Link className='btn btn-dark my-3' to='/'>
             Go Back
         </Link>}

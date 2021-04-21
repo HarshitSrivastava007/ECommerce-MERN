@@ -68,7 +68,7 @@ import SearchBar from './SearchBar';
                  )}
                  
                  <LinkContainer to='/aboutus'>
-                     <Nav.Link><i class="fas fa-file-person"></i>About Us</Nav.Link>
+                     <Nav.Link><i className="fas fa-info"></i> About Us</Nav.Link>
                  </LinkContainer>
 
                 </Nav>

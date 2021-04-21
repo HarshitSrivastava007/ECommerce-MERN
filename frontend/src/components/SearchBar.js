@@ -14,7 +14,7 @@ const SearchBar = ({history}) => {
     }
 
     return (
-        <Form onSubmit={submitHandler} inline>
+        <Form className='p-7' onSubmit={submitHandler} inline>
             <Form.Control type='text'
             name='q'
             onChange={(e)=> setKeyword(e.target.value)}

@@ -5,7 +5,6 @@ import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { Link } from 'react-router-dom'
 import { createOrder } from '../Actions/OrderAction'
-import { USER_DETAILS_RESET } from '../Constents/UserConstent'
 import { ORDER_CREATE_RESET } from '../Constents/OrderConstent'
 
 
@@ -24,8 +23,8 @@ const PlaceOrderScreen = ({history}) => {
 
     //calculating prices
     cart.itemsPrice = cart.cartItems.reduce((acc, item)=> acc + item.price * item.quantity, 0 )
-    cart.shippingPrice= cart.itemsPrice > 200 ? 0 : 100
-    cart.taxPrice= Number((0.18 * cart.itemsPrice).toFixed(2))
+    cart.shippingPrice= cart.itemsPrice > 200 ? 0 : 5
+    cart.taxPrice= Number((0.05 * cart.itemsPrice).toFixed(2))
     cart.totalPrice = Number((cart.itemsPrice + cart.shippingPrice + cart.taxPrice).toFixed(2))
     
     const orderCreate = useSelector((state) => state.orderCreate)
@@ -34,7 +33,6 @@ const PlaceOrderScreen = ({history}) => {
     useEffect(()=>{
         if(success){
             history.push(`/order/${order._id}`)
-            dispatch({ type: USER_DETAILS_RESET})
             dispatch({ type: ORDER_CREATE_RESET})
         }
         // eslint-disable-next-line
