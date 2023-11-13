@@ -1,4 +1,4 @@
-backend/server.jsimport express from 'express'
+import express from 'express'
 import path from 'path'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
