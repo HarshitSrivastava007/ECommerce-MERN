@@ -40,11 +40,9 @@ const AboutUs = () => {
                 
                             </ListGroup.Item> */}
                             <ListGroup.Item>
-                                <Row>
+                                <Row className='mr-auto ml-auto'>
                                 <img src="images/myimage.jpg" alt="Harshit Srivastava"></img>
-                                <h4>Harshit Srivastava</h4>
-                                
-                                    
+                                <h4 className='mr-auto ml-auto'>Harshit Srivastava</h4>
                                 </Row>
                             </ListGroup.Item>
                         </ListGroup>

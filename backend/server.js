@@ -1,4 +1,4 @@
-import express from 'express'
+backend/server.jsimport express from 'express'
 import path from 'path'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
@@ -17,16 +17,22 @@ connectDB();
 
 const app=express();
 
+const __dirname = path.resolve()
+
 if(process.env.NODE_ENV === 'development'){
     app.use(morgan('dev'))
 }
 
+if(process.env.NODE_ENV === 'prodcution'){
+  app.use(express.static(path.join(__dirname,'/frontend/build')))
+  app.use("*", (reg, res) => res.sendFile(path.resolve(__dirname,"frontend","build","index.html")))
+}else{
+  app.get('/',(req,res) =>{
+      res.send("Get method is running...")
+  }) 
+}
+
 app.use(express.json());    //bodyparser sending data from client to server body
-
-
-app.get('/',(req,res) =>{
-    res.send("Get method is running...")
-})
 
 app.use('/api/products', productRouter)
 app.use('/api/users', userRouter)
@@ -36,7 +42,6 @@ app.use('/api/upload', uploadRouter)
 
 app.get('/api/config/paypal',(req,res)=> res.send(process.env.PAYPAL_CLIENT_ID))
 
-const __dirname = path.resolve()
 app.use('/Uploads', express.static(path.join(__dirname, '/Uploads')))                                       //we want that no boddy will access to upload folder so we make it as static
 
 app.use(notFound);
