@@ -1,12 +1,12 @@
 {
+  "proxy": "http://localhost:9000",
+  "homepage": ".",
   "name": "ecommerceapplication",
   "version": "1.0.0",
   "description": "mern shopping app",
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "proxy": "http://localhost:9000",
-    "homepage": ".",
     "start": "node backend/server",
     "server": "nodemon backend/server",
     "client": "npm start --prefix frontend",
