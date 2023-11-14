@@ -10,10 +10,8 @@ import userRouter from './Router/userRoutes.js'
 import orderRouter from './Router/orderRouter.js'
 import uploadRouter from './Router/uploadRoutes.js'
 
-
 dotenv.config();
 connectDB();
-
 
 const app=express();
 
@@ -39,14 +37,12 @@ app.use('/api/users', userRouter)
 app.use('/api/orders', orderRouter)
 app.use('/api/upload', uploadRouter)
 
-
 app.get('/api/config/paypal',(req,res)=> res.send(process.env.PAYPAL_CLIENT_ID))
 
 app.use('/Uploads', express.static(path.join(__dirname, '/Uploads')))                                       //we want that no boddy will access to upload folder so we make it as static
 
 app.use(notFound);
 app.use(errorHandler);
-
 
 const PORT = process.env.PORT || 9000
 app.listen(PORT, function(){

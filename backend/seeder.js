@@ -19,15 +19,12 @@ const importData = async()=>{
         await User.deleteMany()
 
         const createdUser = await User.insertMany(users)
-
         const adminUser = createdUser[0]._id
-
         const sampleProducts =products.map(product =>{
             return { ...product, user: adminUser}
         })
 
         await Product.insertMany(sampleProducts)            //now we insert data in product table with Admin User we created
-
         console.log("Data SuccessFully Imported!!".green.inverse);
         process.exit()
     }catch(error){
@@ -36,23 +33,16 @@ const importData = async()=>{
     }
 }
 
-
-
-
 const destroyData = async()=>{
     try{
         await Order.deleteMany()
         await Product.deleteMany()
         await User.deleteMany()
-
-        
         console.log("Data SuccessFully Destroyed!!".red.inverse);
         process.exit()
     }catch(error){
         console.error(`${error}`.red.inverse)
         process.exit(1)
-
-
     }
 }
 
